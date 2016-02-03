@@ -68,7 +68,9 @@ var config = {
             "postleitzahl",
             "Postleitzahl",
             "plz",
-            "PLZ"
+            "PLZ",
+            "postalCode",
+            "zipCode"
         ],
     "person.phone.land":
         [
@@ -94,7 +96,10 @@ var config = {
             "Mobil",
             "Handy",
             "handynummer",
-            "Handynummer"
+            "Handynummer",
+            "mobilePhone",
+            "cellPhone",
+            "handyNummer"
         ],
     "person.email":
         [
@@ -116,15 +121,6 @@ var config = {
           "emailRepeat",
           "EmailRepeat",
           "E-Mail-Repeat"
-        ],
-    "person.birthday.split(\".\")[0]":
-        [
-            "day",
-            "birthday_day",
-            "tag",
-            "Tag",
-            "birthday-day",
-            "birthdayDay"
         ]
     }
 
@@ -135,10 +131,9 @@ var setValues = function (){
         var fields = config[prop];
         for (var name in fields){
             var cur = fields[name];
-            $('input[name*="'+cur+'"]').each(function(){
+            $('input[name*="'+cur+'"], select[name*="'+cur+'"]').each(function(){
                 var value = eval(prop);
                 if (prop == "person.location.street"){
-                    console.log('in');
                     value = value.replace('Straße', "Str.")
                     .replace('straße', "str.")
                     .replace('Strasse', "Str.")

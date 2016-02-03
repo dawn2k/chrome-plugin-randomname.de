@@ -1,19 +1,23 @@
 {
+  "manifest_version": 2,
+  
   "name": "Randomname.de Form Filler",
   "description": "Fill forms with random user data",
   "version": "1.0",
   "permissions": [
     "activeTab"
   ],
+  
   "icons": { "16": "icon16.png",
            "48": "icon48.png",
           "128": "icon128.png" },
+          
   "background": {
     "scripts": ["background.js", "jquery.js"],
     "persistent": false
   },
+  
   "browser_action": {
     "default_title": "randomname form filler"
-  },
-  "manifest_version": 2
+  }
 }

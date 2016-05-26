@@ -10,7 +10,8 @@ var config = {
             "given_name",
             "vorname",
             "Vorname",
-            "firstName"
+            "firstName",
+            "FirstName"
         ],
     "person.lastname":
         [
@@ -24,7 +25,8 @@ var config = {
             "Nachname",
             "Familienname",
             "familienname",
-            "lastName"
+            "lastName",
+            "LastName"
         ],
     "person.birthday":[
             "birthday",
@@ -121,7 +123,7 @@ var config = {
           "emailRepeat",
           "EmailRepeat",
           "E-Mail-Repeat"
-        ]
+        ],
     }
 
 var person = {};
@@ -134,6 +136,7 @@ var setValues = function (){
             $('input[name*="'+cur+'"], select[name*="'+cur+'"]').each(function(){
                 var value = eval(prop);
                 if (prop == "person.location.street"){
+                    value = value.name+' '+value.number;
                     value = value.replace('Straße', "Str.")
                     .replace('straße', "str.")
                     .replace('Strasse', "Str.")
@@ -150,5 +153,12 @@ var setValues = function (){
 
 $.getJSON('//randomname.de/api/?format=json&phone=a&usage=chrome-plugin', function(data){
     person = data[0];
+    
+    /*Wenn eine bestimmte Domain genutzt werden soll, die nächste Zeile ändern und Kommentarzeichen ("//") für die folgenden zwei Zeilen entfernen */
+    //var tld = "deinedomain.de";
+    //person.email = person.email.split('@')[0]+'@'+tld;
+    
+    /* Wenn eine bestimmte E-Mail genutzt werden soll, die nächste Zeile ändern und Kommentarzeichen ("//") entfernen */
+    //person.email = "deine@email.de";
     setValues();
 });
